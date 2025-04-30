@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 const apiUrl = import.meta.env.VITE_API_KEY;
 
 function Home() {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({message : null});
 
     useEffect(() => {
         fetch(apiUrl)
@@ -11,13 +11,13 @@ function Home() {
             .catch(error => console.error('Error fetching data:', error));
       }, []);
     
-        if (!data) 
+        if (!data.message) 
             return <p>Loading...</p>;
 
         return (
             <div className="homepage">
                 <p>
-                    {data}
+                    {data.message}
                 </p>
                 <div className="first-block">
                     <p>
