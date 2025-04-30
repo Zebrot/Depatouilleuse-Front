@@ -1,7 +1,7 @@
 import getResponse from '../../assets/scripts/utils.ts'
 
 function Home() {
-    const blogs = getResponse('https://la-depatouilleuse-front.onrender.com/');
+    const blogs = getResponse('https://la-depatouilleuse.onrender.com');
     return (
         <div className="homepage">
             <p>
