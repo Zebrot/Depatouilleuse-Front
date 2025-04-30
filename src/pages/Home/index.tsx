@@ -1,7 +1,8 @@
 import getResponse from '../../assets/scripts/utils.ts'
+const apiUrl = import.meta.env.VITE_API_KEY;
 
 function Home() {
-    const blogs = getResponse('https://la-depatouilleuse.onrender.com');
+    const blogs = getResponse(apiUrl);
     return (
         <div className="homepage">
             <p>
