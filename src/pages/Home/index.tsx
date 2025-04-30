@@ -2,35 +2,34 @@ import { useEffect, useState } from 'react';
 const apiUrl = import.meta.env.VITE_API_KEY;
 
 function Home() {
-    const [data, setData] = useState({message : null});
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         fetch(apiUrl)
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(value => setData(value))
             .catch(error => console.error('Error fetching data:', error));
       }, []);
     
-        if (!data.message) 
-            return <p>Loading...</p>;
+    if (!data) 
+        return <p>Loading...</p>;
 
-        return (
-            <div className="homepage">
+    return (
+        <div className="homepage">
+            <p>
+            </p>
+            <div className="first-block">
                 <p>
-                    {data.message}
+                    Ici se trouve le premier bloc de texte, sympa non ?
                 </p>
-                <div className="first-block">
-                    <p>
-                        Ici se trouve le premier bloc de texte, sympa non ?
-                    </p>
-                </div>
-                <div className="second-block">
-                    <p>
-                        Ici se trouve le deuxième bloc de texte, sympa aussi
-                    </p>
-                </div>
             </div>
-        )
+            <div className="second-block">
+                <p>
+                    Ici se trouve le deuxième bloc de texte, sympa aussi
+                </p>
+            </div>
+        </div>
+    )
 }
 
 export default Home
