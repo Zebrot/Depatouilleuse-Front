@@ -1,0 +1,23 @@
+
+.homepage {
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .blog {
+        padding: 5px;
+        width: calc(50% - 15px);
+        transition : 0.4s;
+        cursor: pointer;
+
+        h2,h3 {
+            padding-left: 10px;
+            margin: 0px;
+        }
+        &:hover {
+            background-color : lightgray;
+        }
+    }
+    
+}
