@@ -1,0 +1,19 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+  width: fit-content;
+}
+.toolbar button {
+  border-radius: 5px;
+  padding: 2px 10px;
+  border: 1px dotted black;
+}
+.toolbar button .selected {
+  border: 2px solid blue;
+}
+
+/*# sourceMappingURL=toolbar.css.map */

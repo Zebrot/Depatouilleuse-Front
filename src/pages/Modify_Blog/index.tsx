@@ -1,9 +1,9 @@
 import Composer from '../../components/Composer';
 
-function Blog() {
+function Modify_Blog() {
     return (
         <Composer />
     );
 }
 
-export default Blog
+export default Modify_Blog;

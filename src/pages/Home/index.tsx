@@ -30,7 +30,6 @@ function Home() {
                         <Link to = {`/single?id=${blog._id}`}>
                             <h2 className='blog__title'>{blog.title}</h2>
                             <h3 className='blog__location'>{blog.location}</h3>
-                            <p className='blog__body'>{blog.content}</p>
                         </Link>
                     </div>
                 )

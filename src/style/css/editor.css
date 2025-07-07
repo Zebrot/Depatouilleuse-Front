@@ -1,0 +1,14 @@
+.textEditor {
+  width: 100%;
+  min-height: 8em;
+  outline: 1px solid grey;
+  padding: none;
+}
+.textEditor:focus-visible {
+  outline: 2px dotted black;
+}
+.textEditor p:first-child {
+  margin-top: 0px;
+}
+
+/*# sourceMappingURL=editor.css.map */

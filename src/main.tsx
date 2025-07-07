@@ -7,11 +7,8 @@ import Blog from './pages/Blog'
 import Tips from './pages/Tips'
 import Single from './pages/Single'
 import Header from './components/Header'
-
-
+import Composer from './components/Composer'
 import './style/css/global.css'
-import TestEditor from './components/testEditor'
-
 
 
 createRoot(document.getElementById('root')!).render(
@@ -21,7 +18,8 @@ createRoot(document.getElementById('root')!).render(
         <Header />
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/single" element={<TestEditor/>} />
+          <Route path="/single" element={<Single/>} />
+          <Route path="/editor" element={<Composer/>} />
           <Route path="/map" element={<Map/>} />
           <Route path="/blog" element={<Blog/>} />
           <Route path="/tips" element={<Tips/>} />
