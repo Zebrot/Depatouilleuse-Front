@@ -2,7 +2,7 @@ import '../../style/css/single.css';
 import { useState,useEffect } from 'react';
 import { useSearchParams,useNavigate } from 'react-router';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_KEY;
 
 interface Blog {
     title: string;

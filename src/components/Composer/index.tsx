@@ -5,7 +5,7 @@ import {  useRef } from 'react';
 import { useNavigate } from 'react-router';
 import Toolbar from '../Toolbar';
 import '../../style/css/editor.css'
-const API_URL = 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_KEY;
 
 const theme = {
     // Define your theme styles in there
