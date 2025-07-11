@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../../style/css/home.css'
-import { Link } from 'react-router';
-const apiUrl = import.meta.env.VITE_API_KEY;
+import Card from '../../components/Card';
+const API_URL = import.meta.env.VITE_API_KEY;
 
 interface BlogPost {
     title: string;
@@ -9,31 +9,34 @@ interface BlogPost {
     location: string;
     _id: string
 }
-  
+interface Location {
+    name : string;
+}
 function Home() {
-    const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-
-    useEffect(() => { 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(value => setBlogPosts(value))
-            .catch(error => console.log(error));
-    }, []);
     
-    if (blogPosts.length == 0) 
-        return <p>Loading...</p>;
+    const [postsByLocation, setPostsByLocation] = useState<Record<string, BlogPost[]>>({});
+
+    useEffect(()=> {
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(value => setPostsByLocation(value))
+            .catch(error => console.log(error))
+    },[])
+
+    var blogList =  Object.entries(postsByLocation).map(([location, posts]) => (
+    <div key={location} className='homepage__Location'>
+        <h2>{location}</h2>
+        <ul className='homepage__Location__Bloglist'>
+        {posts.map((blog,i) => (
+            <Card large = {i===0 ? true : false} key = {blog._id} id = {blog._id} title= {blog.title} img_url={'yo'} location={location} />
+        ))}
+        </ul>
+    </div>
+    ))
+
     return (
         <div className="homepage">
-            {blogPosts.map((blog, i) => {
-                return(
-                    <div className='blog' key ={i}>
-                        <Link to = {`/single?id=${blog._id}`}>
-                            <h2 className='blog__title'>{blog.title}</h2>
-                            <h3 className='blog__location'>{blog.location}</h3>
-                        </Link>
-                    </div>
-                )
-            })};
+            {blogList}
         </div>
     )
 }

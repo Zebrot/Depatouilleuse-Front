@@ -1,3 +1,24 @@
 * {
     box-sizing : border-box;
+    --main-color : #54A060;
+    --secondary-color : #155345;
+    --accent-color : #FFC4E2;
+    --background-color : #FFFCF0;
+    --black : #22191A;
+
+    --main-font : 'Edu SA Beginner';
+    --title-font : 'Josefin Sans'
+}
+
+html,body {
+    margin : 0px;
+    background-color: var(--main-color);
+}
+
+.main-container {
+    background-color: var(--background-color);
+    max-width: 1240px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
 }

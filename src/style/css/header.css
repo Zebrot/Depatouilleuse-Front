@@ -1,3 +1,52 @@
-
+.header {
+  width: 100%;
+  background-color: var(--main-color);
+  font-family: var(--title-font);
+  font-weight: 500;
+  padding: 25px 0px;
+  color: var(--background-color);
+  gap: 25px;
+}
+.header h1 {
+  font-weight: 500;
+  font-size: 32px;
+}
+.header > * {
+  max-width: 1240px;
+  margin: auto;
+  display: flex;
+}
+.header__banner {
+  display: flex;
+  justify-content: space-between;
+}
+.header__banner > * {
+  width: 50%;
+}
+.header__banner__logo {
+  top: 10px;
+}
+.header__banner__menu {
+  display: flex;
+  justify-content: space-between;
+  font-size: 32px;
+  font-weight: 500;
+}
+.header__pageTitle {
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+.header a {
+  text-decoration: none;
+  color: var(--background-color);
+}
+.header a:hover {
+  text-decoration: underline;
+  color: var(--accent-color);
+}
+.header a.current {
+  color: var(--accent-color);
+}
 
 /*# sourceMappingURL=header.css.map */

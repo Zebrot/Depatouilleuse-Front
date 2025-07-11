@@ -1,6 +1,6 @@
 import '../../style/css/single.css';
 import { useState,useEffect } from 'react';
-import { useSearchParams,useNavigate } from 'react-router';
+import { useSearchParams,useNavigate, Link } from 'react-router';
 
 const API_URL = import.meta.env.VITE_API_KEY;
 
@@ -112,7 +112,7 @@ function Single() {
             <div className='blog__content'>{blog.content}</div>
 
         <button className='blog__deleteButton' onClick={handleDelete}> Supprimer ce blog</button>
-        <button className='blog__modifyButton'> Modifier le blog </button>
+        <Link to={`/edit?id=${id}`} className='blog__modifyButton'> Modifier le blog </Link>
         </div>
     )
 }

@@ -3,21 +3,39 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin"
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
-import { LexicalEditor } from "lexical"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useEffect } from "react"
+import { useEffect, useImperativeHandle , forwardRef} from "react"
 
-function Editor({ editorRef }: { editorRef: React.RefObject<LexicalEditor | null> }) {
+type EditorProps = {
+    initialJson?: string;
+};
+export type EditorHandle = {
+  getContent: () => string;
+};
+
+const Editor = forwardRef<EditorHandle, EditorProps>(({ initialJson }, ref) => {
     const [editor] = useLexicalComposerContext();
-    useEffect(()=>{
-        editorRef.current = editor;
-    },[editor])
+    useEffect(() => {
+        if (!initialJson)
+            return;
+        const parsedState = editor.parseEditorState(initialJson);
+        editor.setEditorState(parsedState);
+    }, [editor, initialJson]);
+
+    useImperativeHandle(ref, () => ({
+        getContent() {
+        let result = '';
+        editor.getEditorState().read(() => {
+            result = JSON.stringify(editor.getEditorState().toJSON());
+        });
+        return result;
+        },
+    }));
 
     return(
         <>
             <RichTextPlugin
                 contentEditable={<ContentEditable className='textEditor'/>}
-                placeholder={<div>Enter some text...</div>}
                 ErrorBoundary={LexicalErrorBoundary}
             />
             <HistoryPlugin />
@@ -25,6 +43,6 @@ function Editor({ editorRef }: { editorRef: React.RefObject<LexicalEditor | null
         </>
     )
 
-}
+});
 
 export default Editor

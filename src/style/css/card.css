@@ -1,0 +1,73 @@
+.blogCard {
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  width: 350px;
+  height: 550px;
+  --font-size: 24px;
+  --small-font-size: 24px;
+}
+.blogCard > * {
+  transition: 0.4s;
+}
+.blogCard.large {
+  width: 760px;
+  --font-size: 50px;
+  --small-font-size: 30px;
+  margin: 0px 200px;
+}
+.blogCard__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: var(--background-color);
+  text-align: center;
+}
+.blogCard__text__title {
+  font-family: var(--title-font);
+  font-weight: 500;
+  font-size: var(--font-size);
+}
+.blogCard__text__location {
+  font-family: var(--main-font);
+  font-size: var(--small-font-size);
+  font-weight: 400;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.blogCard__text__location .calendar_icon {
+  font-size: 25px;
+}
+.blogCard__image {
+  height: 550px;
+  width: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.blogCard::after {
+  background: var(--black);
+  content: " ";
+  opacity: 30%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.blogCard:hover .blogCard__image {
+  transform: translateX(-50%) scale(110%);
+}
+.blogCard:hover::after {
+  opacity: 60%;
+}
+
+/*# sourceMappingURL=card.css.map */

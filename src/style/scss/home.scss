@@ -1,23 +1,32 @@
-
 .homepage {
     display : flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 63px;
 
-    .blog {
-        padding: 5px;
-        width: calc(50% - 15px);
-        transition : 0.4s;
-        cursor: pointer;
-
-        h2,h3 {
-            padding-left: 10px;
-            margin: 0px;
+    &__Location {
+        >h2 {
+            color: var(--secondary-color);
+            font-family: var(--title-font);
+            margin-top: 0px;
+            padding-top: 40px;
+            font-size: 80px;
+            font-weight: 500;
+            text-align: center;
+            display: block;
+            position: absolute;
+            left : 0;
+            width: 100vw;
+            height: 550px;
+            background: var(--background-color);
         }
-        &:hover {
-            background-color : lightgray;
+        &__Bloglist {
+            margin-top: 200px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 63px;
         }
     }
-    
 }
