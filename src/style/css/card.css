@@ -24,13 +24,19 @@
   z-index: 10;
   color: var(--background-color);
   text-align: center;
+  width: 100%;
 }
 .blogCard__text__title {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.5em;
+  transition: 0.4s;
   font-family: var(--title-font);
   font-weight: 500;
   font-size: var(--font-size);
 }
-.blogCard__text__location {
+.blogCard__text__date {
   font-family: var(--main-font);
   font-size: var(--small-font-size);
   font-weight: 400;
@@ -40,7 +46,7 @@
   justify-content: center;
   margin: auto;
 }
-.blogCard__text__location .calendar_icon {
+.blogCard__text__date .calendar_icon {
   font-size: 25px;
 }
 .blogCard__image {
@@ -62,6 +68,15 @@
   left: 0;
   pointer-events: none;
   transition: 0.4s;
+}
+.blogCard:hover .blogCard__text__title {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--accent-color);
+  text-underline-offset: 0.1em;
+}
+.blogCard:hover .blogCard__text__date {
+  color: var(--yellow);
 }
 .blogCard:hover .blogCard__image {
   transform: translateX(-50%) scale(110%);

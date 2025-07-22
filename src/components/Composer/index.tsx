@@ -3,12 +3,25 @@ import Editor, { EditorHandle } from '../Editor';
 import { useRef } from 'react'; 
 import { useNavigate } from 'react-router';
 import Toolbar from '../Toolbar';
-import '../../style/css/editor.css';
+import '../../style/css/composer.css';
 import LocationSelector from '../LocationSelector';
+import CleanDate from '../CleanDate';
+import OverlayToolbar from '../OverlayToolbar';
 const API_URL = import.meta.env.VITE_API_KEY;
 
 const theme = {
-    // Define your theme styles in there
+    text: {
+        bold: 'bold',
+        italic: 'italic',
+        underline: 'underline',
+        strikethrough: 'strikethrough',
+        highlight: 'highlight',
+        xs: 'xs',
+        s: 's',
+        m: 'm',
+        l: 'l',
+        xl: 'xl'        
+    }
 };
 interface composerProps{
     initialContent?: string;
@@ -28,17 +41,20 @@ function Composer({ initialContent} : composerProps){
         var parsedContent = JSON.parse(initialContent)
 
     function submitText(e: React.FormEvent<HTMLFormElement>) {
-        const formData = new FormData(e.currentTarget);
         e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
         let content = editorRef.current?.getContent();
         if (!content)
             return false;
         const data = {
             title : formData.get('title'),
             content : content,
-            location : formData.get('location')
+            location : formData.get('location'),
+            date : new Date()
         }
         const headers = new Headers({'Content-Type': 'application/json'});
+        console.log(data);
         fetch(API_URL, {
             method: 'POST',
             headers : headers,
@@ -52,23 +68,20 @@ function Composer({ initialContent} : composerProps){
     }
 
     return(
-        <div>
-            <form onSubmit={submitText}>
-                <div>
-                    <label htmlFor="title">Title:</label>
-                    <input type="text" id="title" name="title" required />
+            <form onSubmit={submitText} className='blogForm'>
+                <div className='blogForm__textEditor'>
+                    <LexicalComposer initialConfig={composerConfig}>
+                        <Toolbar />
+                        <input className='blogForm__title' type="text" id="title" name="title" placeholder='Titre' required /> 
+                        <Editor ref={editorRef} initialJson={parsedContent ? parsedContent : null}/>
+                        <OverlayToolbar />
 
+                    </LexicalComposer>
                 </div>
-                <LexicalComposer initialConfig={composerConfig}>
-                    <Toolbar />
-                    <Editor ref={editorRef} initialJson={parsedContent ? parsedContent : null}/>
-                </LexicalComposer>
-
                 <LocationSelector />
-                <button type="submit">Submit</button>
+                <CleanDate date = {new Date()} />
+                <button className='blogForm__submitButton' type="submit">Submit</button>
             </form>
-
-        </div>
     );
 
 }

@@ -1,14 +1,32 @@
 .textEditor {
   width: 100%;
   min-height: 8em;
-  outline: 1px solid grey;
-  padding: none;
+  outline: none;
+  padding-left: 5px;
 }
-.textEditor:focus-visible {
-  outline: 2px dotted black;
+.textEditor p {
+  font-family: var(--main-font);
+  font-weight: 500;
+  position: relative;
+  padding-left: 10px;
 }
-.textEditor p:first-child {
-  margin-top: 0px;
+.textEditor p::before {
+  font-family: "FontAwesome";
+  content: "\f1dd";
+  opacity: 0%;
+  color: var(--main-color);
+  margin-right: 4px;
+  alignment-baseline: central;
+  position: absolute;
+  left: -10px;
+  bottom: 0px;
+  transition: 0.2s;
+}
+.textEditor p:hover::before {
+  opacity: 80%;
+}
+.textEditor p:focus::before {
+  opacity: 100%;
 }
 
 /*# sourceMappingURL=editor.css.map */

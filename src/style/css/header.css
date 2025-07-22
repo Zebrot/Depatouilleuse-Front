@@ -38,15 +38,30 @@
   color: var(--accent-color);
 }
 .header a {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-style: wavy;
   color: var(--background-color);
+  text-decoration-color: var(--main-color);
+  text-underline-offset: 0.5em;
+  transition: 0.4s;
 }
 .header a:hover {
-  text-decoration: underline;
+  transition: 0.4s;
   color: var(--accent-color);
+  text-decoration-color: var(--yellow);
+  -moz-text-decoration-style: wavy;
+  text-underline-offset: 0.2em;
+}
+.header a:hover::before {
+  width: 100%;
 }
 .header a.current {
   color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 4px;
 }
 
 /*# sourceMappingURL=header.css.map */

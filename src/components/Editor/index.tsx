@@ -5,7 +5,8 @@ import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { useEffect, useImperativeHandle , forwardRef} from "react"
-
+import "../../style/css/editor.css"
+import { COMMAND_PRIORITY_LOW, SELECTION_CHANGE_COMMAND, $getSelection, $isRangeSelection } from "lexical"
 type EditorProps = {
     initialJson?: string;
 };
@@ -21,7 +22,6 @@ const Editor = forwardRef<EditorHandle, EditorProps>(({ initialJson }, ref) => {
         const parsedState = editor.parseEditorState(initialJson);
         editor.setEditorState(parsedState);
     }, [editor, initialJson]);
-
     useImperativeHandle(ref, () => ({
         getContent() {
         let result = '';

@@ -7,10 +7,8 @@ interface BlogPost {
     title: string;
     content: string;
     location: string;
-    _id: string
-}
-interface Location {
-    name : string;
+    date: Date;
+    _id: string;
 }
 function Home() {
     
@@ -22,17 +20,22 @@ function Home() {
             .then(value => setPostsByLocation(value))
             .catch(error => console.log(error))
     },[])
-
-    var blogList =  Object.entries(postsByLocation).map(([location, posts]) => (
-    <div key={location} className='homepage__Location'>
-        <h2>{location}</h2>
-        <ul className='homepage__Location__Bloglist'>
-        {posts.map((blog,i) => (
-            <Card large = {i===0 ? true : false} key = {blog._id} id = {blog._id} title= {blog.title} img_url={'yo'} location={location} />
-        ))}
-        </ul>
-    </div>
-    ))
+    if(Object.entries(postsByLocation).length > 0){
+        var blogList =  Object.entries(postsByLocation).map(([location, posts]) => (
+            <div key={location} className='homepage__Location'>
+                <h2>{location}</h2>
+                <ul className='homepage__Location__Bloglist'>
+                {posts.map((blog,i) => (
+                    <Card large = {i===0 ? true : false} key = {blog._id} id = {blog._id} title= {blog.title} img_url={'yo'} date={blog.date} />
+                ))}
+                </ul>
+            </div>
+        ))
+    }
+    else
+        return(
+            <div>Loading...</div>
+        )
 
     return (
         <div className="homepage">

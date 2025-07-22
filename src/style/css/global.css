@@ -4,9 +4,28 @@
   --secondary-color: #155345;
   --accent-color: #FFC4E2;
   --background-color: #FFFCF0;
+  --yellow: #E6FF00;
   --black: #22191A;
   --main-font: "Edu SA Beginner";
   --title-font: "Josefin Sans" ;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--secondary-color);
 }
 
 html, body {

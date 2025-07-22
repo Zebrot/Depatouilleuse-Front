@@ -18,6 +18,9 @@
   width: 100vw;
   height: 550px;
   background: var(--background-color);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--yellow);
 }
 .homepage__Location__Bloglist {
   margin-top: 200px;

@@ -1,0 +1,21 @@
+.overlayToolbar {
+    pointer-events: none;
+    position:absolute;
+    background-color: white;
+    opacity: 0%;
+    transition: opacity 0.4s;
+    width: fit-content;
+    box-shadow: 0 5px 10px #0000004d;
+    border-radius: 10px;
+    &.visible{
+        pointer-events: initial;
+        opacity: 100%;
+    }
+    ul{
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 5px;
+        gap: 5px;
+    }
+}

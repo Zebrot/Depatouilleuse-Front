@@ -4,7 +4,6 @@
     font-family: var(--title-font);
     font-weight: 500;
     padding: 25px 0px;
-
     color : var(--background-color);
     gap: 25px;
     & h1 {
@@ -40,15 +39,30 @@
     }
     
     & a {
-        text-decoration : none;
+        text-decoration: underline;
+        text-decoration-thickness: 4px;
+        text-decoration-style: wavy;
         color : var(--background-color);
-
+        text-decoration-color: var(--main-color);
+        text-underline-offset: 0.5em;
+        transition: 0.4s;
         &:hover{
-            text-decoration: underline;
-            color : var(--accent-color)
+            transition: 0.4s;
+            color: var(--accent-color);
+            text-decoration-color: var(--yellow);
+            -moz-text-decoration-style: wavy;
+            text-underline-offset: 0.2em;
+        }
+        &:hover::before{
+            width: 100%;
         }
         &.current {
             color: var(--accent-color);
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: var(--yellow);
+            text-decoration-thickness: 4px;
+
         }
     }
 }

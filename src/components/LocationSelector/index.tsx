@@ -25,7 +25,7 @@ function LocationSelector(){
             .then(() => {
                 if(!promptValue)
                     return 
-                var newList = [...locationList, {name : promptValue}];
+                var newList = [ {name : promptValue}, ...locationList];
                 setLocationList(newList)
             })
             .catch(error => console.log(error))
@@ -34,7 +34,7 @@ function LocationSelector(){
 
 
     return (
-        <div>
+        <div className="blogForm__locationSelector">
             <label htmlFor="location">location:</label>
             <select name="location" id="location">
                 {locationList.map((location, i)=> {

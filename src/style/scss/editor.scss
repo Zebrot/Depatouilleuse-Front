@@ -1,13 +1,31 @@
 .textEditor{
     width: 100%;
     min-height: 8em;
-    outline: 1px solid grey;
-    padding: none;
+    outline: none;
+    padding-left: 5px;
 
-   &:focus-visible {
-        outline : 2px dotted black;
+    p{
+        font-family: var(--main-font);
+        font-weight: 500;
+        position: relative;
+        padding-left: 10px;
     }
-    p:first-child {
-        margin-top:0px
+    p::before{
+        font-family: 'FontAwesome';
+        content: '\f1dd';
+        opacity: 0%;
+        color: var(--main-color);
+        margin-right: 4px;
+        alignment-baseline: central;
+        position: absolute;
+        left: -10px;
+        bottom: 0px;
+        transition: 0.2s;
+    }
+    p:hover::before {
+        opacity: 80%;
+    }
+    p:focus::before {
+        opacity: 100%;
     }
 }
